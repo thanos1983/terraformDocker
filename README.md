@@ -33,9 +33,9 @@ rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 ```
 
-Sample of `terraform plan`:
+Sample of terraform plan:
 
-```bash
+```
 $ terraform plan -out=planOutpout
 
 Terraform used the selected providers to generate the following execution plan. Resource
@@ -121,7 +121,7 @@ To perform exactly these actions, run the following command to apply:
 
 Sample of `terraform apply`:
 
-```bash
+```
 $ terraform apply "planOutpout"
 docker_image.nginx: Creating...
 docker_image.nginx: Creation complete after 6s [id=sha256:a99a39d070bfd1cb60fe65c45dea3a33764dc00a9546bf8dc46cb5a11b1b50e9nginx:latest]
@@ -133,7 +133,7 @@ Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 
 Sample of files after `terraform apply`:
 
-```bash
+```
 $ ls -la
 total 68
 drwxr-xr-x  4 tinyos tinyos  4096 Jan 22 18:58 .
@@ -151,38 +151,42 @@ drwxr-xr-x  3 tinyos tinyos  4096 Jan 22 18:53 .terraform
 -rw-r--r--  1 tinyos tinyos   123 Jan 22 18:46 versions.tf
 ```
 
-Sample of `curl` on `localhost`:
+Sample of curl on `localhost`:
 
-```bash
-$ curl localhost:8000
+```
+$ curl localhost:8000 | xmllint --format -
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   615  100   615    0     0   150k      0 --:--:-- --:--:-- --:--:--  150k
+<?xml version="1.0"?>
 <!DOCTYPE html>
 <html>
-<head>
-<title>Welcome to nginx!</title>
-<style>
+  <head>
+    <title>Welcome to nginx!</title>
+    <style>
 html { color-scheme: light dark; }
 body { width: 35em; margin: 0 auto;
 font-family: Tahoma, Verdana, Arial, sans-serif; }
 </style>
-</head>
-<body>
-<h1>Welcome to nginx!</h1>
-<p>If you see this page, the nginx web server is successfully installed and
+  </head>
+  <body>
+    <h1>Welcome to nginx!</h1>
+    <p>If you see this page, the nginx web server is successfully installed and
 working. Further configuration is required.</p>
-
-<p>For online documentation and support please refer to
+    <p>For online documentation and support please refer to
 <a href="http://nginx.org/">nginx.org</a>.<br/>
 Commercial support is available at
 <a href="http://nginx.com/">nginx.com</a>.</p>
-
-<p><em>Thank you for using nginx.</em></p>
-</body>
+    <p>
+      <em>Thank you for using nginx.</em>
+    </p>
+  </body>
 </html>
 ```
 
 Sample of `terraform plan destroy`:
 
-```bash
+```
 $ terraform plan -destroy -out=destroyOutput
 docker_image.nginx: Refreshing state... [id=sha256:a99a39d070bfd1cb60fe65c45dea3a33764dc00a9546bf8dc46cb5a11b1b50e9nginx:latest]
 docker_container.nginx: Refreshing state... [id=ffe9176ff5ab238084df5b456eb0a2027015db0f302623ed805adf77e1250895]
@@ -285,7 +289,7 @@ To perform exactly these actions, run the following command to apply:
 
 Sample of `terraform destroy`:
 
-```bash
+```
 $ terraform apply "destroyOutput"
 docker_container.nginx: Destroying... [id=ffe9176ff5ab238084df5b456eb0a2027015db0f302623ed805adf77e1250895]
 docker_container.nginx: Destruction complete after 0s
