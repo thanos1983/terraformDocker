@@ -33,9 +33,9 @@ rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 ```
 
-Sample of terraform plan:
+Sample of `terraform plan`:
 
-```
+```bash
 $ terraform plan -out=planOutpout
 
 Terraform used the selected providers to generate the following execution plan. Resource
@@ -121,7 +121,7 @@ To perform exactly these actions, run the following command to apply:
 
 Sample of `terraform apply`:
 
-```
+```bash
 $ terraform apply "planOutpout"
 docker_image.nginx: Creating...
 docker_image.nginx: Creation complete after 6s [id=sha256:a99a39d070bfd1cb60fe65c45dea3a33764dc00a9546bf8dc46cb5a11b1b50e9nginx:latest]
@@ -133,7 +133,7 @@ Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 
 Sample of files after `terraform apply`:
 
-```
+```bash
 $ ls -la
 total 68
 drwxr-xr-x  4 tinyos tinyos  4096 Jan 22 18:58 .
@@ -153,7 +153,7 @@ drwxr-xr-x  3 tinyos tinyos  4096 Jan 22 18:53 .terraform
 
 Sample of curl on `localhost`:
 
-```
+```bash
 $ curl localhost:8000 | xmllint --format -
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
@@ -186,7 +186,7 @@ Commercial support is available at
 
 Sample of `terraform plan destroy`:
 
-```
+```bash
 $ terraform plan -destroy -out=destroyOutput
 docker_image.nginx: Refreshing state... [id=sha256:a99a39d070bfd1cb60fe65c45dea3a33764dc00a9546bf8dc46cb5a11b1b50e9nginx:latest]
 docker_container.nginx: Refreshing state... [id=ffe9176ff5ab238084df5b456eb0a2027015db0f302623ed805adf77e1250895]
@@ -289,7 +289,7 @@ To perform exactly these actions, run the following command to apply:
 
 Sample of `terraform destroy`:
 
-```
+```bash
 $ terraform apply "destroyOutput"
 docker_container.nginx: Destroying... [id=ffe9176ff5ab238084df5b456eb0a2027015db0f302623ed805adf77e1250895]
 docker_container.nginx: Destruction complete after 0s
